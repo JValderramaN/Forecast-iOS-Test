@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import Forecast
 
 class ForecastTests: XCTestCase {
@@ -25,9 +26,10 @@ class ForecastTests: XCTestCase {
     func testValidForecastData() {
         // Given
         let promise = expectation(description: "Forecast has data!")
+        let coordinate = CLLocationCoordinate2D(latitude: 37.8267, longitude: -122.4233)
         
         // When
-        APILayer.getForecastData { (forecastObject, error) in
+        APILayer.getForecastData(with: coordinate) { (forecastObject, error) in
             if let error = error {
                 XCTFail("Error: \(error.localizedDescription)")
                 return

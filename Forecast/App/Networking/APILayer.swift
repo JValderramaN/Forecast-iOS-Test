@@ -9,16 +9,15 @@
 import Foundation
 import Alamofire
 import AlamofireObjectMapper
+import CoreLocation
 
 typealias ComplationHandler = (_ object: Any?, _ error: Error?) -> Void
+let secretKey = "dd355c7232fb9751501144f9e9066fa6"
 
 class APILayer {
     
-    static func getForecastData(with complationHandler: @escaping ComplationHandler) {
-        
-        // TODO: pedir latitud y longitud
-        
-        let url = "https://api.darksky.net/forecast/dd355c7232fb9751501144f9e9066fa6/37.8267,-122.4233"
+    static func getForecastData(with locationCoordinate: CLLocationCoordinate2D, and complationHandler: @escaping ComplationHandler) {
+        let url = "https://api.darksky.net/forecast/\(secretKey)/\(locationCoordinate.latitude),\(locationCoordinate.longitude)"
         
         Alamofire.request(url).responseObject { (response: DataResponse<Forecast>) in
             guard let forecast = response.result.value else {

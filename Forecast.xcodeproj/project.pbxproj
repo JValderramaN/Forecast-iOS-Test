@@ -18,6 +18,7 @@
 		AB8D13DA208500D3009EEF3E /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8D13D9208500D3009EEF3E /* Forecast.swift */; };
 		AB8D13DD2085042D009EEF3E /* UIAlertController+Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8D13DC2085042D009EEF3E /* UIAlertController+Forecast.swift */; };
 		ABC38EE320852CDF00FF2F5E /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC38EE220852CDF00FF2F5E /* ForecastViewModel.swift */; };
+		ABC38EE520853AFD00FF2F5E /* Error+Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC38EE420853AFD00FF2F5E /* Error+Forecast.swift */; };
 		B788C1F3B99A88CFCC4A3FA4 /* Pods_ForecastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A89959D929D8F87513484191 /* Pods_ForecastTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		AB8D13D9208500D3009EEF3E /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		AB8D13DC2085042D009EEF3E /* UIAlertController+Forecast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Forecast.swift"; sourceTree = "<group>"; };
 		ABC38EE220852CDF00FF2F5E /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
+		ABC38EE420853AFD00FF2F5E /* Error+Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+Forecast.swift"; sourceTree = "<group>"; };
 		D4BE77AEEDFC03BA44E6D8D8 /* Pods-ForecastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForecastTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ForecastTests/Pods-ForecastTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				AB8D13DB20850417009EEF3E /* Extensions */,
+				ABC38EE420853AFD00FF2F5E /* Error+Forecast.swift */,
 			);
 			path = Additionals;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 			files = (
 				AB8D13DA208500D3009EEF3E /* Forecast.swift in Sources */,
 				AB8D13D82084FEC1009EEF3E /* APILayer.swift in Sources */,
+				ABC38EE520853AFD00FF2F5E /* Error+Forecast.swift in Sources */,
 				AB8D13B12084F6E4009EEF3E /* ForecastViewController.swift in Sources */,
 				ABC38EE320852CDF00FF2F5E /* ForecastViewModel.swift in Sources */,
 				AB8D13AF2084F6E4009EEF3E /* AppDelegate.swift in Sources */,

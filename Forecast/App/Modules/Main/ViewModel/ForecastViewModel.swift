@@ -20,6 +20,7 @@ class ForecastViewModel: NSObject {
     
     override init() {
         super.init()
+        handleLocation()
     }
     
     private func handleLocation() {
@@ -36,22 +37,28 @@ class ForecastViewModel: NSObject {
     }
     
     func loadForecast() {
-        APILayer.getForecastData { [weak self] (object, error) in
+        guard let coordinate = locationManager.location?.coordinate else {
+            let error = NSError.errorFromForecastError(.couldNotGetUserCoordinate)
+            delegate?.loadForecastFinished(self, forecast: nil, error: error)
+            return
+        }
+        
+        APILayer.getForecastData(with: coordinate) { [weak self] (object, error) in
             guard let weakSelf = self else {
                 return
             }
-            
+
             guard error == nil else {
                 weakSelf.delegate?.loadForecastFinished(weakSelf, forecast: nil, error: error)
                 return
             }
-            
+
             guard let forecast = object as? Forecast else {
-                let error = NSError(domain: "", code: 1, userInfo: [NSLocalizedDescriptionKey : NSLocalizedString("Could not process Forecast data", comment: "")])
+                let error = NSError.errorFromForecastError(.couldNotProcessForecastData)
                  weakSelf.delegate?.loadForecastFinished(weakSelf, forecast: nil, error: error)
                 return
             }
-            
+
             weakSelf.delegate?.loadForecastFinished(weakSelf, forecast: forecast, error: nil)
         }
     }
@@ -60,7 +67,7 @@ class ForecastViewModel: NSObject {
 extension ForecastViewModel: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status != .authorizedWhenInUse {
+        if status != .notDetermined && status != .authorizedWhenInUse {
             delegate?.locationServiceRequired(self)
         }
     }

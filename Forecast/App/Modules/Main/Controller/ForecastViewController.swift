@@ -65,7 +65,7 @@ class ForecastViewController: UIViewController {
 
 extension ForecastViewController: ForecastViewModelDelegate {
     func locationServiceRequired(_ forecastViewModel: ForecastViewModel) {
-        let alert = UIAlertController.alertWithAcceptButton(message: NSLocalizedString("Please allow the location service for this app in order to work properly", comment: ""))
+        let alert = UIAlertController.alertWithAcceptButton(message: NSError.errorFromForecastError(.locationServiceNotAllowed)?.localizedDescription)
         self.present(alert, animated: true, completion: nil)
     }
     
